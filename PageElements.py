@@ -47,7 +47,6 @@ class Image(PageElement):
         self.imagePath = imagePath
 
     def display(self, surface):
-        print(getcwd())
         img = pygame.image.load(self.imagePath)
         img = pygame.transform.scale(img, (self.rect[2], self.rect[3]))
         surface.blit(img, (self.rect[0], self.rect[1]))
