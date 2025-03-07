@@ -1,16 +1,16 @@
-from PyUI.Window import Window
+from Window import Window
 ##import the custom screens you made---
-from ExampleScreen import ExampleScreen
+from TestScreen import tScreen
 ##-------------------------------------
 
 
 window = Window("Example App", (0,255,0)) ##Create the window to work with
 
 ##Create Screen Objects for use------
-exampleScreen = ExampleScreen(window)
+t = tScreen(window)
 ##-----------------------------------
 
-screen = exampleScreen ##set screen to be the starting screen
+screen = t ##set screen to be the starting screen
 
 while True: ##Game loop
     ##Enter code here to handle changes between screens---

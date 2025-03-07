@@ -4,7 +4,8 @@ class Window:
 
     def __init__(self, title="Test App", colorRGB=False):
         pygame.init()
-        self.screen = pygame.display.set_mode((800, 600))
+        self.screenDims = (800,600)
+        self.screen = pygame.display.set_mode(self.screenDims, pygame.RESIZABLE)
         pygame.display.set_caption(title)
         self.color = (0, 0, 0)
         if colorRGB:
@@ -18,11 +19,11 @@ class Window:
     def update(self, screenObj=False):
         if screenObj:
             self.screen.fill(screenObj.color)
-            screenObj.display()
+            screenObj.display(self.screenDims)
 
         else:
             self.screen.fill(self.color)
-        screenObj.display()
+
         pygame.display.flip()
 
     def checkForInput(self, screen):
@@ -39,4 +40,7 @@ class Window:
                     if e.wasClicked(clickLoc):
                         e.onClick(screen)
                         return
+                    
+            if event.type == pygame.VIDEORESIZE:
+                self.screenDims = self.screen.get_size()
 

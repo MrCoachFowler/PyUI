@@ -17,9 +17,10 @@ class Screen:
         pass
 
 
-    def display(self):
+    def display(self, screenDims):
         self.elementsToDisplay()
         for e in self.elements:
+            e.adjustToScreenSize(screenDims)
             e.display(self.surface)
         
         
