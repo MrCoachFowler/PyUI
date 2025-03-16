@@ -5,6 +5,7 @@ class Screen:
         self.elements = []
         self.color = colorRGB
         self.state = {}
+        self.waitForNextFrame = 0
 
     def elementsToDisplay(self):
         #override this with the elements to render

@@ -1,4 +1,5 @@
 import pygame
+from time import sleep
 
 class Window:
 
@@ -25,6 +26,11 @@ class Window:
             self.screen.fill(self.color)
 
         pygame.display.flip()
+
+        if screenObj:
+            if screenObj.waitForNextFrame:
+                sleep(screenObj.waitForNextFrame)
+                screenObj.waitForNextFrame  = 0
 
     def checkForInput(self, screen):
         #check for inputs
