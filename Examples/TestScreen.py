@@ -1,5 +1,5 @@
-from PageElements import *
-from Screen import Screen
+from PyUI.PageElements import *
+from PyUI.Screen import Screen
 
 class tScreen(Screen):
     def __init__(self, window):

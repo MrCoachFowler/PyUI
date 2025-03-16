@@ -1,6 +1,6 @@
-from Window import Window
+from PyUI.Window import Window
 ##import the custom screens you made---
-from TestScreen import tScreen
+from PyUI.Examples.TestScreen import tScreen
 ##-------------------------------------
 
 
