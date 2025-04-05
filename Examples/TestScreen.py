@@ -12,10 +12,10 @@ class tScreen(Screen):
             Button((20, 40), 10, 10, "Hi", (255, 255,255), (0,0,0)),
             Button((20, 20), 10, 10, "Hi", (255, 255,255), (0,0,0)),
 
-            Image((50, 80), 10, 10, "./hawk.jpeg"),
-            Image((50, 60), 10, 10, "./hawk.jpeg"),
-            Image((50, 50), 100, 100, "./hawk.jpeg"),
-            Image((50, 20), 10, 10, "./hawk.jpeg"),
+            Image((50, 80), 10, 10,     "./PyUI/Examples/hawk.png"),
+            Image((50, 60), 10, 10,     "./PyUI/Examples/hawk.png"),
+            Image((50, 50), 10, 10,   "./PyUI/Examples/hawk.png"),
+            Image((50, 20), 10, 10,     "./PyUI/Examples/hawk.png"),
 
             Label((80, 80), 10, 10, "Hello World\nGoodBye World"),
             Label((80, 60), 10, 10, "Hello WorldGoodBye World"),
