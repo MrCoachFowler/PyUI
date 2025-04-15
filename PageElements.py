@@ -25,6 +25,27 @@ class PageElement:
         #https://www.pygame.org/docs/ref/display.html#:~:text=If%20the%20display%20is%20set,the%20window%20must%20be%20redrawn.
         self.rect = convertPercentRectToScreenRect(self.percentRect, screenDims)
 
+class Rectangle(PageElement):
+    def __init__(self, centerXY, width, height, color):
+        super().__init__(centerXY, width, height, color)
+
+    def display(self, surface):
+        pygame.draw.rect(surface, self.color, self.rect)
+
+class Line(PageElement):
+    def __init__(self, bottomLeftCoord, topRightCoord, color=(0,0,0), pixelWidth=3):
+        centerXY = ( (bottomLeftCoord[0] + topRightCoord[0]) / 2, (bottomLeftCoord[1] + topRightCoord[1]) / 2)
+        width = topRightCoord[0] - bottomLeftCoord[0]
+        height = topRightCoord[1] - bottomLeftCoord[1]
+        super().__init__(centerXY, width, height, color)
+        self.pixelWidth = pixelWidth
+
+    def wasClicked(self, clickLoc): #disable clicking on lines for now...
+        pass
+
+    def display(self, surface):
+        pygame.draw.line(surface, self.color, self.rect.bottomleft, self.rect.topright, self.pixelWidth)
+
 
 class Button(PageElement):
 
