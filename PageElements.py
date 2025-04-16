@@ -46,9 +46,41 @@ class Line(PageElement):
     def display(self, surface):
         pygame.draw.line(surface, self.color, self.rect.bottomleft, self.rect.topright, self.pixelWidth)
 
+class Ellipse(PageElement):
+    def __init__(self, centerXY, width, height, color=(255,255,255)):
+        super().__init__(centerXY, width, height, color)
+
+    def display(self, surface):
+        pygame.draw.ellipse(surface, self.color, self.rect)
+
+    def onClick(self, screen):
+        pass #disable click by default
+
+class Shape(PageElement):
+    def __init__(self, centerXY, width, height, points, color=(255,255,255)):
+        super().__init__(centerXY, width, height, color)
+        self.scalablePoints = []
+        for p in points:
+            scalableX = (p[0] - 50)/100
+            scalableY = (p[1] - 50)/100
+            self.scalablePoints.append((scalableX, scalableY))
+
+    def adjustToScreenSize(self, screenDims):
+        super().adjustToScreenSize(screenDims)
+        self.points = []
+        center = getCenterFromRect(self.rect)
+        for p in self.scalablePoints:
+            pX = p[0] * self.rect.width + center[0]
+            pY = -p[1] * self.rect.height + center[1]
+            self.points.append((pX, pY))
+            
+    def display(self, surface):
+        pygame.draw.polygon(surface, self.color, self.points)
+
+    def onClick(self, screen):
+        pass #disable clicking by default
 
 class Button(PageElement):
-
     def __init__(self, centerXY, width, height, text, textColorRGB=(0,0,0), backColorRGB=(255,255,255)):
         super().__init__(centerXY, width, height, backColorRGB)
         # pygame.font.init()
@@ -57,8 +89,6 @@ class Button(PageElement):
         self.widthPerc = width
         self.heightPerc = height
         self.centerPerc = centerXY
-
-        
     
     def onClick(self, screen):
         print("a ha! You've found a useless button. Great Work")
@@ -85,7 +115,7 @@ class Image(PageElement):
 
 
     def onClick(self, screen):
-        print("You've clicked a useless image")
+        pass #disable for images by default
 
 class Label(PageElement):
     def __init__(self, centerXY, width, height, text, fontSize=14, textColorRGB=(0,0,0)):
