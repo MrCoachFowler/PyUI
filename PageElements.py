@@ -118,16 +118,19 @@ class Image(PageElement):
         pass #disable for images by default
 
 class Label(PageElement):
-    def __init__(self, centerXY, width, height, text, fontSize=14, textColorRGB=(0,0,0)):
+    def __init__(self, centerXY, width, height, text, fontSize=14, textColorRGB=(0,0,0), backColorRGB=False):
         super().__init__(centerXY, width, height, None)
         self.text = text
         self.fontSize = fontSize
         self.textColorRGB = textColorRGB
+        self.backColorRGB = backColorRGB
 
         #create font object to render text
         
 
     def display(self, surface):
+        if self.backColorRGB:
+            pygame.draw.rect(surface, self.backColorRGB, self.rect)
         pygame.font.init()
         font = pygame.font.Font('freesansbold.ttf', self.fontSize)
         
