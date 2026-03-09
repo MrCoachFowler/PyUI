@@ -20,4 +20,5 @@ while True: ##Game loop
     ##----------------------------------------------------
 
     window.checkForInput(screen) #checks for inputs on the screen
+    window.checkForHover(screen) #checks for hover on the screen
     window.update(screen) #updates the window to reflect the new screen

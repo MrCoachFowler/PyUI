@@ -14,11 +14,22 @@ class PageElement:
             return True
         return False
     
+    def wasHovered(self, mouse_pos):
+        if self.rect.collidepoint(mouse_pos):
+            return True
+        return False
+    
     def display(self, surface):
         pygame.draw.rect(surface, self.color, self.rect)
 
     def onClick(self, screen):
         print("You've clicked a useless page element")
+
+    def onHover(self, screen):
+        pass
+
+    def notHovered(self, screen):
+        pass
 
     def adjustToScreenSize(self, screenDims):
         #call on screen size adjust event?
@@ -93,6 +104,9 @@ class Button(PageElement):
     def onClick(self, screen):
         print("a ha! You've found a useless button. Great Work")
         print('The text on this button is: ' + self.text)
+
+    def onHover(self, screen):
+        pass
 
     def display(self, surface):
         font = pygame.font.Font('freesansbold.ttf', 14)
